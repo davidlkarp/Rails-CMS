@@ -1,0 +1,24 @@
+<h1>Product#new</h1>
+<p>Find me in app/views/product/new.html.erb</p>
+<hr>
+
+<div>
+	<form action='/product/create' method='post'>
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		Name: <input type='text' name='name'>
+		Description: <input type='text' name='description'>
+		Price: <input type='text' name='pricing'>
+		Category: 
+			<select name='category'>
+				<option value='1'> Electronics </option>
+				<option value='2'> Household </option>
+				<option value='3'> Gardening </option>
+				<option value='4'> Automotive </option>
+				<option value='5'> Ninjas </option>
+			</select>
+
+		<input type='submit' value='Create'>
+	</form>
+</div>
+
+<a href='/product/index'> Go Back </a>

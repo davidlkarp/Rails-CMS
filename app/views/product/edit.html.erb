@@ -1,0 +1,31 @@
+<h1>Product#edit</h1>
+<p>Find me in app/views/product/edit.html.erb</p>
+<div>
+	<form action='/product/<%= @product.id %>/update' method='post'>
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		Name: <input type='text' name='name' value='<%= @product.name %>'>
+		Description: <input type='text' name='description' value='<%= @product.description %>'> 
+		Price: <input type='text' name='pricing' value='<%= @product.pricing %>'>
+		Category: 
+			<select name='category'>
+				<option value='1' <% if @product.category_id == 1 %>
+					selected 
+					<% end %> > Electronics </option>
+				<option value='2' <% if @product.category_id == 2 %>
+					selected 
+					<% end %> > Household </option>
+				<option value='3' <% if @product.category_id == 3 %>
+					selected 
+					<% end %> > Gardening </option>
+				<option value='4' <% if @product.category_id == 4 %>
+					selected 
+					<% end %> > Automotive </option>
+				<option value='5' <% if @product.category_id == 5 %>
+					selected 
+					<% end %> > Ninjas </option>
+			</select>
+		<input type='submit' value='Update'>
+	</form>
+</div>
+
+<a href='/product/index'> Go Back </a>
