@@ -1,24 +1,41 @@
-<h1>Product#new</h1>
-<p>Find me in app/views/product/new.html.erb</p>
-<hr>
-
-<div>
-	<form action='/product/create' method='post'>
-		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-		Name: <input type='text' name='name'>
-		Description: <input type='text' name='description'>
-		Price: <input type='text' name='pricing'>
-		Category: 
-			<select name='category'>
-				<option value='1'> Electronics </option>
-				<option value='2'> Household </option>
-				<option value='3'> Gardening </option>
-				<option value='4'> Automotive </option>
-				<option value='5'> Ninjas </option>
-			</select>
-
-		<input type='submit' value='Create'>
-	</form>
+<div class='container'>
+	<div class='row col-md-6 col-md-offset-3'>
+		<h1> Create a Product </h1>
+	</div>
+	<div class='row col-md-6 col-md-offset-3'>
+		<form action='/product/create' method='post'>
+			<div class='form-group'>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<label> Name: </label>
+				<input id='iName' class="form-control" type='text' name='name'>
+			</div>
+			<div class='form-group'>
+				<label> Description: </label>
+				<input class="form-control"type='text' name='description'>
+			</div>
+			<div class='form-group'>
+				<label> Price: </label>
+				<input class="form-control"type='text' name='pricing'>
+			</div>
+			<div class='form-group'>
+				<label> Category: </label>
+				<select class="form-control" name='category'>
+					<option value='1'> Electronics </option>
+					<option value='2'> Household </option>
+					<option value='3'> Gardening </option>
+					<option value='4'> Automotive </option>
+					<option value='5'> Ninjas </option>
+				</select>
+			</div>
+			<div class='form-group'>
+			<input  class='btn btn-danger' type='submit' value='Create'>
+			</div>
+		</form>
+	</div>
+	<div class='row' >
+		<a href='/product/index' class='col-md-6 col-md-offset-3'> 
+			<span class="glyphicon glyphicon-arrow-left"></span> Go Back 
+		</a>
+	</div>
+	
 </div>
-
-<a href='/product/index'> Go Back </a>

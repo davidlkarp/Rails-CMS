@@ -1,7 +1,6 @@
 class ProductController < ApplicationController
   def index
     @product = Product.joins(:category).all
-
   end
 
   def show
@@ -13,6 +12,7 @@ class ProductController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @category = Category.all
   end
 
   def create
@@ -28,5 +28,15 @@ class ProductController < ApplicationController
   def destroy
     @product = Product.find(params[:id]).destroy
     redirect_to '/product/index'
+  end
+
+  def commentCreate
+    @comment = Comment.create(comment:params[:comment], product_id:params[:id])
+    redirect_to '/product/' + params[:id] + '/show'
+  end
+
+  def allComments
+     @comment = Comment.joins(:product).all
+
   end
 end

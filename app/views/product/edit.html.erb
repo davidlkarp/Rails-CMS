@@ -1,31 +1,43 @@
-<h1>Product#edit</h1>
-<p>Find me in app/views/product/edit.html.erb</p>
-<div>
-	<form action='/product/<%= @product.id %>/update' method='post'>
-		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-		Name: <input type='text' name='name' value='<%= @product.name %>'>
-		Description: <input type='text' name='description' value='<%= @product.description %>'> 
-		Price: <input type='text' name='pricing' value='<%= @product.pricing %>'>
-		Category: 
-			<select name='category'>
-				<option value='1' <% if @product.category_id == 1 %>
-					selected 
-					<% end %> > Electronics </option>
-				<option value='2' <% if @product.category_id == 2 %>
-					selected 
-					<% end %> > Household </option>
-				<option value='3' <% if @product.category_id == 3 %>
-					selected 
-					<% end %> > Gardening </option>
-				<option value='4' <% if @product.category_id == 4 %>
-					selected 
-					<% end %> > Automotive </option>
-				<option value='5' <% if @product.category_id == 5 %>
-					selected 
-					<% end %> > Ninjas </option>
-			</select>
-		<input type='submit' value='Update'>
-	</form>
-</div>
 
-<a href='/product/index'> Go Back </a>
+<div class='container'>
+	<div class='row col-md-6 col-md-offset-3'>
+		<h1> Product Edit </h1>
+	</div>
+	<div class='row col-md-6 col-md-offset-3'>
+		<form action='/product/<%= @product.id %>/update' method='post' >
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<div class='form-group'>
+			<label >Name: </label>
+			<input class="form-control" type='text' name='name' value='<%= @product.name %>' >
+		</div>
+		<div class='form-group'>
+			<label>Description: </label> 
+			<input type='text' name='description' class="form-control" value='<%= @product.description %>'> 
+		</div>
+		<div class='form-group'>
+			<label>Price: </label> 
+			<input class="form-control" type='text' name='pricing' value='<%= @product.pricing %>'>
+		</div>
+		<div class='form-group'>
+			<label>Category: </label> 
+			<select class="form-control" name='category'>
+				<% @category.each do |i| %>
+					<option value='<%= i.id %>' <% if @product.category_id == i.id %>
+						selected 
+						<% end %> > <%= i.name %> 
+					</option>
+				<% end %>
+			</select>
+		</div>
+
+		<div class='form-group'>
+			<input type='submit' value='Update' class='btn btn-success'>
+		</div>
+		<div class='row' >
+			<a href='/product/index' class='col-md-6'> 
+				<span class="glyphicon glyphicon-arrow-left"></span> Go Back 
+			</a>
+		</div>
+		</form>
+	</div>
+</div>

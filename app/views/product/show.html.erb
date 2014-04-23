@@ -1,9 +1,41 @@
-<h1>Product#show</h1>
-<p>Find me in app/views/product/show.html.erb</p>
-
-<p> Name: <%= @product.name %></p>
-<p> Description: <%= @product.description %> </p>
-<p> Pricing: <%= @product.pricing %> </p>
-<p> Category: <%= @product.category.name %> </p>
-
-<a href='/product/index'> Go Back </a>
+<div class='container'>
+	<div class='row'>
+		<h1 class='col-md-6 col-md-offset-3'> Product #<%= @product.id %> </h1>
+	</div>
+	<div class='row'>
+		<div class='col-md-6 col-md-offset-3'>
+			<p> <strong> Name: </strong> <pre> <%= @product.name %> </pre> </p>
+			<p> <strong>Description: </strong> <pre><%= @product.description %> </pre> </p>
+			<p> <strong>Pricing: </strong> <pre><%= @product.pricing %> </pre> </p>
+			<p> <strong>Category: </strong> <pre><%= @product.category.name %> </pre> </p>
+		</div>
+	</div>
+	<div class='row'>
+		<form action='comment/create' method='post' class='col-md-5 col-md-offset-3'>
+			<div class='form-group'>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input class='form-control' type='text' name='comment'>
+			</div>
+			<div class='form-group'>
+				<input type='submit' value='Post Comment' class='btn btn-primary'>
+			</div>
+		</form>
+	</div>
+	<div class='row'>
+		<div class='col-md-6 col-md-offset-3'>
+			<p> Comments: </p>
+			<table>
+				<% @product.comments.each do |i| %>
+				<tr>
+					<td> <%= i.comment %> --- <%= i.created_at %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+	<div class='row'>
+		<a href='/product/index' class='col-md-6 col-md-offset-3'> 
+			<span class="glyphicon glyphicon-arrow-left"></span> Go Back 
+		</a>
+	</div>
+</div>

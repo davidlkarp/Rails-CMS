@@ -6,6 +6,8 @@ Dashboard::Application.routes.draw do
   post "product/create" => 'product#create'
   post "product/:id/update" => 'product#update'
   get "product/:id/delete" => 'product#destroy'
+  post "/product/:id/comment/create" => 'product#commentCreate'
+  get "/comments/show" => 'product#allComments'
 
   root 'product#index'
   # The priority is based upon order of creation: first created -> highest priority.
